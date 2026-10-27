@@ -1,1 +1,0 @@
-Put your azan recording here and name it azan.mp3 (see README.md).

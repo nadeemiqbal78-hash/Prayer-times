@@ -1,0 +1,164 @@
+/* EICT prayer times. Written for iOS 9 Safari (iPad 2): no grid, no CSS variables. */
+
+/* Palette: ink green #0d2623, panel #153b35, row #1f4d44, ivory #f1ecdc,
+   muted #9db5ac, gold #d9b45a, amber #e8a33d, red #d9604c */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #0d2623;
+  color: #f1ecdc;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  overflow-x: hidden;
+}
+.clear { clear: both; height: 0; overflow: hidden; }
+
+#app { padding: 20px 28px 14px 28px; }
+
+/* Banners */
+.banner {
+  font-size: 22px;
+  padding: 12px 18px;
+  margin-bottom: 14px;
+  border-radius: 6px;
+  color: #12201c;
+}
+.banner-amber { background: #e8a33d; }
+.banner-red { background: #d9604c; color: #fff; }
+
+/* Header */
+#mosque {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  line-height: 1.2;
+}
+#dates {
+  font-size: 22px;
+  color: #9db5ac;
+  margin: 6px 0 14px 0;
+}
+#hijri { margin-left: 18px; }
+
+/* Layout: floats so it works on every old Safari */
+#hero { float: left; width: 44%; }
+#schedule { float: right; width: 54%; }
+
+/* Clock and countdown */
+#clock {
+  font-weight: 200;
+  font-size: 88px;
+  line-height: 1;
+  letter-spacing: -1px;
+  white-space: nowrap;
+}
+.ap {
+  font-size: .32em;
+  margin-left: .2em;
+  letter-spacing: 0;
+  color: #9db5ac;
+}
+#next {
+  margin-top: 30px;
+  padding: 18px 22px 20px 22px;
+  background: #153b35;
+  border-left: 8px solid #d9b45a;
+}
+#next-label {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1.25;
+}
+#next-count {
+  font-weight: 300;
+  font-size: 84px;
+  line-height: 1.1;
+  color: #d9b45a;
+  margin-top: 6px;
+  white-space: nowrap;
+}
+#next.alert { background: #d9b45a; border-left-color: #f1ecdc; color: #12201c; }
+#next.alert #next-count { color: #12201c; font-size: 44px; }
+.pulse { -webkit-animation: pulse 1.6s ease-in-out infinite; animation: pulse 1.6s ease-in-out infinite; }
+@-webkit-keyframes pulse { 0% { opacity: 1; } 50% { opacity: .55; } 100% { opacity: 1; } }
+@keyframes pulse { 0% { opacity: 1; } 50% { opacity: .55; } 100% { opacity: 1; } }
+
+/* Table */
+#times { width: 100%; border-collapse: collapse; }
+#times th, #times td { text-align: left; padding: 0 12px; }
+#times thead th {
+  font-size: 20px;
+  font-weight: 400;
+  color: #9db5ac;
+  padding-bottom: 8px;
+}
+#times tbody tr { height: 74px; border-top: 1px solid #25524a; }
+#times tbody th {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: normal;
+  font-size: 38px;
+}
+#times tbody td { font-size: 44px; font-weight: 300; white-space: nowrap; }
+#times tbody td .ap { font-size: .42em; }
+#times tr.minor { height: 52px; color: #9db5ac; }
+#times tr.minor th { font-size: 26px; }
+#times tr.minor td { font-size: 30px; }
+#times tr.past { opacity: .45; }
+#times tr.next { background: #1f4d44; }
+#times tr.next th, #times tr.next td { color: #d9b45a; }
+#times tr.next th:first-child { border-left: 8px solid #d9b45a; padding-left: 8px; }
+
+/* Footer */
+#footer { margin-top: 16px; padding-top: 10px; border-top: 1px solid #25524a; }
+#status { float: left; font-size: 18px; color: #9db5ac; padding-top: 12px; max-width: 58%; }
+#tools { float: right; }
+#tools button {
+  font-size: 18px;
+  min-height: 44px;
+  padding: 0 16px;
+  margin-left: 8px;
+  border: 1px solid #3b6c62;
+  border-radius: 6px;
+  background: transparent;
+  color: #9db5ac;
+}
+
+/* Sound unlock overlay */
+#unlock {
+  position: fixed;
+  left: 0; top: 0; right: 0; bottom: 0;
+  z-index: 50;
+  background: rgba(7, 22, 20, .95);
+  text-align: center;
+}
+#unlock .box { position: absolute; left: 0; right: 0; top: 50%; margin-top: -150px; padding: 0 40px; }
+#unlock-btn {
+  font-size: 42px;
+  padding: 30px 56px;
+  border: 0;
+  border-radius: 18px;
+  background: #d9b45a;
+  color: #12201c;
+}
+#unlock p { font-size: 22px; line-height: 1.4; color: #9db5ac; margin-top: 28px; }
+
+/* Portrait: stack everything */
+@media (orientation: portrait) {
+  #hero, #schedule { float: none; width: 100%; }
+  #schedule { margin-top: 20px; }
+  #clock { font-size: 112px; }
+  #next { margin-top: 20px; padding: 14px 22px 16px 22px; }
+  #next-count { font-size: 88px; }
+  #times tbody tr { height: 68px; }
+  #times tbody th { font-size: 40px; }
+  #times tbody td { font-size: 46px; }
+  #times tr.minor { height: 48px; }
+  #footer { margin-top: 10px; }
+  #status { max-width: 50%; }
+}

@@ -1,0 +1,43 @@
+name: Update prayer times
+
+on:
+  schedule:
+    # UTC. The mosque updates at midnight London time; the later runs are retries.
+    - cron: "10 0 * * *"
+    - cron: "10 3 * * *"
+    - cron: "10 12 * * *"
+  workflow_dispatch:      # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-times
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch and parse prayer times
+        run: python scripts/fetch_times.py
+
+      - name: Commit if times changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add times.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update prayer times"
+            git push
+          fi

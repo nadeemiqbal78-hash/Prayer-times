@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="EICT Prayer">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" href="icon.png">
+<title>EICT Prayer Times</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <div id="banner-stale" class="banner banner-red" style="display:none"></div>
+  <div id="banner-sound" class="banner banner-amber" style="display:none">Sound is off. Tap here to turn it on so the azan can play.</div>
+
+  <div id="header">
+    <div id="mosque">Edgware Islamic Cultural Trust</div>
+    <div id="dates"><span id="date">&nbsp;</span><span id="hijri"></span></div>
+  </div>
+
+  <div id="main">
+    <div id="hero">
+      <div id="clock">--:--:--</div>
+      <div id="next">
+        <div id="next-label">Loading prayer times</div>
+        <div id="next-count">&nbsp;</div>
+      </div>
+    </div>
+
+    <div id="schedule">
+      <table id="times">
+        <thead>
+          <tr><th></th><th>Adhan</th><th>Jama&rsquo;ah</th></tr>
+        </thead>
+        <tbody>
+          <tr id="row-fajr"><th scope="row">Fajr</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+          <tr id="row-sunrise" class="minor"><th scope="row">Sunrise</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+          <tr id="row-zuhr"><th scope="row">Zuhr</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+          <tr id="row-asr"><th scope="row">Asr</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+          <tr id="row-maghrib"><th scope="row">Maghrib</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+          <tr id="row-isha"><th scope="row">Isha</th><td class="c-start"></td><td class="c-jamaah"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="footer">
+    <div id="status">&nbsp;</div>
+    <div id="tools">
+      <button type="button" id="t-azan">Test azan</button>
+      <button type="button" id="t-chime">Test chime</button>
+      <button type="button" id="t-stop">Stop</button>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+</div>
+
+<div id="unlock">
+  <div class="box">
+    <button type="button" id="unlock-btn">Tap to turn sound on</button>
+    <p>Needed once each time this page is opened, so the azan can play at prayer times.<br>Keep the volume up and leave this screen open.</p>
+  </div>
+</div>
+
+<audio id="azan" src="audio/azan.mp3" preload="auto"></audio>
+<audio id="chime" src="audio/chime.wav" preload="auto"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>

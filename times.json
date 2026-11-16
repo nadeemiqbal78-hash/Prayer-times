@@ -1,31 +1,31 @@
 {
-  "date": "2026-11-15",
-  "hijri": "5 Jumādā ath-Thāniya 1448",
+  "date": "2026-11-16",
+  "hijri": "6 Jumādā ath-Thāniya 1448",
   "source": "https://edgwareict.org.uk/",
-  "updated_ts": 1794747363,
-  "updated_iso": "2026-11-15T12:56:03Z",
+  "updated_ts": 1794792405,
+  "updated_iso": "2026-11-16T01:26:45Z",
   "prayers": {
     "fajr": {
       "start": "05:35",
-      "jamaah": "06:16"
+      "jamaah": "06:17"
     },
     "sunrise": {
-      "start": "07:16"
+      "start": "07:17"
     },
     "zuhr": {
       "start": "11:50",
       "jamaah": "12:45"
     },
     "asr": {
-      "start": "13:49",
+      "start": "13:48",
       "jamaah": "14:45"
     },
     "maghrib": {
-      "start": "16:14",
-      "jamaah": "16:21"
+      "start": "16:13",
+      "jamaah": "16:20"
     },
     "isha": {
-      "start": "17:47",
+      "start": "17:46",
       "jamaah": "19:30"
     }
   }

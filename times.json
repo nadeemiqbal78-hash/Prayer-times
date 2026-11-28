@@ -2,12 +2,15 @@
   "date": "2026-11-28",
   "hijri": "18 Jumādā ath-Thāniya 1448",
   "source": "https://edgwareict.org.uk/",
-  "updated_ts": 1795851499,
-  "updated_iso": "2026-11-28T07:38:19Z",
+  "updated_ts": 1795865876,
+  "updated_iso": "2026-11-28T11:37:56Z",
   "prayers": {
     "fajr": {
       "start": "05:55",
       "jamaah": "06:37"
+    },
+    "sunrise": {
+      "start": "07:37"
     },
     "zuhr": {
       "start": "11:54",
